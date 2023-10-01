@@ -4,6 +4,7 @@ import React from "react";
 import type { Metadata } from "next";
 
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,9 +42,10 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          <h1 className="h1-bold">hello world</h1>
-
-          {children}
+          <ThemeProvider>
+            <h1 className="h1-bold">hello world</h1>
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
