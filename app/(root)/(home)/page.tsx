@@ -1,9 +1,40 @@
 import HomeFilters from "@/components/home/HomeFilters";
+import QuestionCard from "@/components/QuestionCard";
+import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import { Filter } from "lucide-react";
 import Link from "next/link";
+
+const questions = [
+  {
+    _id: 1,
+    title: "cascading deletes in sq",
+    tags: [
+      { _id: "1", name: "python" },
+      { _id: "2", name: "sql" },
+    ],
+    author: "john doe",
+    upvotes: 10,
+    views: 100,
+    answers: 2,
+    // createdAt: ''
+  },
+  {
+    _id: 2,
+    title: "how to center div",
+    tags: [
+      { _id: "1", name: "css" },
+      { _id: "2", name: "sql" },
+    ],
+    author: "john doe",
+    upvotes: 10,
+    views: 100,
+    answers: 2,
+    // createdAt: ''
+  },
+];
 
 export default function Home() {
   return (
@@ -34,6 +65,30 @@ export default function Home() {
       </div>
 
       <HomeFilters />
+
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((q) => (
+            <QuestionCard
+              key={q._id}
+              title={q.title}
+              tags={q.tags}
+              author={q.author}
+              upvotes={q.upvotes}
+              views={q.views}
+              answers={q.answers}
+              createdAt={q.createdAt}
+            />
+          ))
+        ) : (
+          <NoResult
+            title="No questions to show"
+            description="blahhdee blahhdaay blahhh"
+            link="/"
+            linkTitle="questions"
+          />
+        )}
+      </div>
     </>
   );
 }
