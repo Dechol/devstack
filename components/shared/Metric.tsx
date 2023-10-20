@@ -1,7 +1,5 @@
-import { Link } from "lucide-react";
 import Image from "next/image";
-import { Props } from "next/script";
-import { title } from "process";
+import Link from "next/link";
 import React from "react";
 
 interface metricProps {

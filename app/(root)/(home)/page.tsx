@@ -1,42 +1,16 @@
 import HomeFilters from "@/components/home/HomeFilters";
 import QuestionCard from "@/components/QuestionCard";
+import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { Filter } from "lucide-react";
+import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 
-const questions = [
-  {
-    _id: 1,
-    title: "cascading deletes in sq",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "sql" },
-    ],
-    author: "john doe",
-    upvotes: 10,
-    views: 100,
-    answers: 2,
-    // createdAt: ''
-  },
-  {
-    _id: 2,
-    title: "how to center div",
-    tags: [
-      { _id: "1", name: "css" },
-      { _id: "2", name: "sql" },
-    ],
-    author: "john doe",
-    upvotes: 10,
-    views: 100,
-    answers: 2,
-    // createdAt: ''
-  },
-];
+export default async function Home() {
+  const result = await getQuestions({});
 
-export default function Home() {
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -54,21 +28,21 @@ export default function Home() {
           iconPosition="right"
           imgSrc="/assets/icons/search.svg"
           placeholder="Search for questions"
-          otherClasses="flex-1"
+          otherclasses="flex-1"
         />
 
         <Filter
           filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
+          otherclasses="min-h-[56px] sm:min-w-[170px]"
+          containerclasses="hidden max-md:flex"
         />
       </div>
 
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((q) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((q) => (
             <QuestionCard
               key={q._id}
               title={q.title}

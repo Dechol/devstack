@@ -1,4 +1,3 @@
-import { Value } from "@radix-ui/react-select";
 import Link from "next/link";
 import React from "react";
 import Metric from "./shared/Metric";
@@ -15,11 +14,11 @@ interface questionProps {
     _id: string;
     name: string;
     picture: string;
-  }[];
+  };
   upvotes: number;
   views: number;
   answers: number;
-  createdAt: date;
+  createdAt: Date;
 }
 
 const QuestionCard = ({
