@@ -11,7 +11,7 @@ import Link from "next/link";
 export default async function Home() {
   const result = await getQuestions({});
 
-  console.log("homepage");
+  console.log(result.questions);
 
   return (
     <>
@@ -47,6 +47,7 @@ export default async function Home() {
           result.questions.map((q) => (
             <QuestionCard
               key={q._id}
+              _id={q._id}
               title={q.title}
               tags={q.tags}
               author={q.author}
