@@ -9,8 +9,6 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "@/node_modules/next/link";
-import { Button } from "@/components/ui/button";
-import { SignedOut } from "@/node_modules/@clerk/nextjs/dist/types/components.server";
 import { sidebarLinks } from "@/constants/index";
 import { usePathname } from "@/node_modules/next/navigation";
 
