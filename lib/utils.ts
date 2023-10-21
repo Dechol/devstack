@@ -5,4 +5,5 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getTimeStamp = (createdAt: Date): string => {};
+// TODO finish timestamp function and implement
+// export const getTimeStamp = (createdAt: Date): string => {};
